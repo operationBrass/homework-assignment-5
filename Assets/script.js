@@ -30,23 +30,45 @@ const cbox = document.querySelectorAll(".saveBtn");
 const ctext = document.querySelectorAll(".description")
 
 
-
+// trigger each time user clicks save button
  for (let i = 0; i < cbox.length; i++) 
  {
      cbox[i].addEventListener("click", function(event) 
      {
         
         let dataToSave = ctext[i].value
-        if(dataToSave != " ") //seems to be the default string of these text areas
+        if(dataToSave != " ") //seems to be the default string of these textareas
 
         {
         localStorage.setItem(i,dataToSave);
-        cbox[i].innerHTML = "<i class='fas fa-save'> </i>"
-
+        saveIcon(i,true);
         }
         event.stopPropagation();
      });
 }
+
+//trigger each time user changes the value in plan event
+for (let i = 0; i < ctext.length; i++) 
+{
+    ctext[i].addEventListener("input", function(event) 
+    {
+        saveIcon(i,false);
+        
+    });
+}
+
+//handle save icon on button isSave true if save false is data change.
+function saveIcon(id, isSave)
+{
+    if(!isSave)
+    {
+        cbox[id].innerHTML = "<i class='far fa-save'> </i>"
+        return;
+    }
+
+    cbox[id].innerHTML = "<i class='fas fa-save'> </i>"
+}
+
 
 function readPlannerData()
 {
@@ -58,6 +80,7 @@ function readPlannerData()
         if(dayEvent != null) 
         {
             ctext[i].value = dayEvent;
+            saveIcon(i, true);
         }
     }
 }
