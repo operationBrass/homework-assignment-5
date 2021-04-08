@@ -9,7 +9,9 @@ tDate.innerHTML = moment().format("dddd, MMMM Do");
 
 /*creating some HTML for row and col divs*/
 var hourCol =  "<div class='col-2 hour' ></div>";
-var inputCol = "<div class='col-8'><textarea class='description'> </textarea></div>";
+
+var inputCol = "<div class='col-8'><textarea class='description'></textarea></div>";
+
 var saveCol =  "<div class= 'col-2'> <button class='saveBtn' > <i class='far fa-save'> </i> </button> <button class='trashBtn' > <i class='far fa-trash-alt'> </i> </button>";
 var plannerRow = "<div class='row time-block'>" + hourCol + inputCol + saveCol + "</div>";
 
@@ -38,6 +40,8 @@ const ctext = document.querySelectorAll(".description")
      {
         
         let dataToSave = ctext[i].value
+        console.log(dataToSave);
+        console.log("user clicked on", i, " button");
         if(dataToSave != " ") //seems to be the default string and lenght these textareas
 
         {
@@ -114,7 +118,7 @@ function colorAssignment(sHour)
 {
     var id = plannerContainer.children;
     var curHour = new Date().getHours();
-    sHour = 16;
+  
 
     for(i=0; i < id.length; i++)
     {
