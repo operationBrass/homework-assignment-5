@@ -9,10 +9,8 @@ tDate.innerHTML = moment().format("dddd, MMMM Do");
 
 /*creating some HTML for row and col divs*/
 var hourCol =  "<div class='col-2 hour' ></div>";
-
 var inputCol = "<div class='col-8'><textarea class='description'></textarea></div>";
-
-var saveCol =  "<div class= 'col-2'> <button class='saveBtn' > <i class='far fa-save'> </i> </button> <button class='trashBtn' > <i class='far fa-trash-alt'> </i> </button>";
+var saveCol =  "<div class= 'col-2 ml-auto'> <button class='saveBtn' > <i class='far fa-save'> </i> </button> <button class='trashBtn' > <i class='far fa-trash-alt'> </i> </button>";
 var plannerRow = "<div class='row time-block'>" + hourCol + inputCol + saveCol + "</div>";
 
 for (var i = 9; i < 18; i++) 
@@ -40,8 +38,6 @@ const ctext = document.querySelectorAll(".description")
      {
         
         let dataToSave = ctext[i].value
-        console.log(dataToSave);
-        console.log("user clicked on", i, " button");
         if(dataToSave != " ") //seems to be the default string and lenght these textareas
 
         {
@@ -94,7 +90,6 @@ function readPlannerData()
     for (let i = 0; i < 9; i++) 
     {
        dayEvent = localStorage.getItem(i)
-       console.log("item ", i, " is: ", dayEvent)
         if(!!dayEvent) 
         {
             ctext[i].value = dayEvent;
@@ -126,7 +121,7 @@ function colorAssignment(sHour)
         {
           id[i].classList.add("past")  ;
         }
-        else if(i+sHour > curHour)
+        else if(i+sHour > curHour) /* its 12pm  */
         {
             id[i].classList.add("future")  ;
         }
