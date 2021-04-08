@@ -9,6 +9,7 @@ textarea{
 
   background: transparent;
   border: none;
+  resize: none;
   color: #000000;
   width: 100%;
  
