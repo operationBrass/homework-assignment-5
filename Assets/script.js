@@ -113,7 +113,6 @@ function colorAssignment(sHour)
 {
     var id = plannerContainer.children;
     var curHour = new Date().getHours();
-  
 
     for(i=0; i < id.length; i++)
     {
