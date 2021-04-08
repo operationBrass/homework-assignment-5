@@ -27,6 +27,7 @@ hourAssignment(9);
 /*add eventlistner to buttons this is really cool way of managing..*/
 
 const cbox = document.querySelectorAll(".saveBtn");
+const cdel = document.querySelectorAll(".trashBtn")
 const ctext = document.querySelectorAll(".description")
 
 
@@ -37,7 +38,7 @@ const ctext = document.querySelectorAll(".description")
      {
         
         let dataToSave = ctext[i].value
-        if(dataToSave != " ") //seems to be the default string of these textareas
+        if(dataToSave != " " || dataToSave.length != 1) //seems to be the default string and lenght these textareas
 
         {
         localStorage.setItem(i,dataToSave);
@@ -46,6 +47,21 @@ const ctext = document.querySelectorAll(".description")
         event.stopPropagation();
      });
 }
+
+localStorage.clear();
+
+for (let i = 0; i < cdel.length; i++) 
+{
+    cdel[i].addEventListener("click", function(event) 
+    {
+        console.log("click")
+        ctext[i].value = "";
+       localStorage.removeItem(i);
+       saveIcon(i,false);
+       event.stopPropagation();
+    });
+}
+
 
 //trigger each time user changes the value in plan event
 for (let i = 0; i < ctext.length; i++) 
