@@ -38,7 +38,7 @@ const ctext = document.querySelectorAll(".description")
      {
         
         let dataToSave = ctext[i].value
-        if(dataToSave != " " || dataToSave.length != 1) //seems to be the default string and lenght these textareas
+        if(dataToSave != " ") //seems to be the default string and lenght these textareas
 
         {
         localStorage.setItem(i,dataToSave);
@@ -48,14 +48,11 @@ const ctext = document.querySelectorAll(".description")
      });
 }
 
-localStorage.clear();
-
 for (let i = 0; i < cdel.length; i++) 
 {
     cdel[i].addEventListener("click", function(event) 
     {
-        console.log("click")
-        ctext[i].value = "";
+    ctext[i].value = "";
        localStorage.removeItem(i);
        saveIcon(i,false);
        event.stopPropagation();
