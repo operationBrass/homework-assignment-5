@@ -9,8 +9,8 @@ tDate.innerHTML = moment().format("dddd, MMMM Do");
 
 /*creating some HTML for row and col divs*/
 var hourCol =  "<div class='col-2 hour' ></div>";
-var inputCol = "<div class='col-9'><textarea class='description'> </textarea></div>";
-var saveCol =  "<button class='col-1 saveBtn' > <i class='far fa-save'> </i> </button>";
+var inputCol = "<div class='col-8'><textarea class='description'> </textarea></div>";
+var saveCol =  "<div class= 'col-2'> <button class='saveBtn' > <i class='far fa-save'> </i> </button> <button class='trashBtn' > <i class='far fa-trash-alt'> </i> </button>";
 var plannerRow = "<div class='row time-block'>" + hourCol + inputCol + saveCol + "</div>";
 
 for (var i = 9; i < 18; i++) 
@@ -77,13 +77,23 @@ function readPlannerData()
     for (let i = 0; i < 9; i++) 
     {
        dayEvent = localStorage.getItem(i)
-        if(dayEvent != null) 
+       console.log("item ", i, " is: ", dayEvent)
+        if(!!dayEvent) 
         {
             ctext[i].value = dayEvent;
             saveIcon(i, true);
         }
+        else
+        {
+            
+            saveIcon(i, false);
+            
+        }
+
     }
 }
+
+
 
 readPlannerData();
 
@@ -91,7 +101,7 @@ function colorAssignment(sHour)
 {
     var id = plannerContainer.children;
     var curHour = new Date().getHours();
-    
+    sHour = 16;
 
     for(i=0; i < id.length; i++)
     {
