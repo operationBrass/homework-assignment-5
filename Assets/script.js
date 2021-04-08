@@ -41,7 +41,8 @@ const ctext = document.querySelectorAll(".description")
 
         {
         localStorage.setItem(i,dataToSave);
-        console.log(localStorage)
+        cbox[i].innerHTML = "<i class='fas fa-save'> </i>"
+
         }
         event.stopPropagation();
      });
